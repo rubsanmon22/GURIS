@@ -1,6 +1,11 @@
-# **GURIS** (Guiding-center Utility for Relativistic Interactions in Simulations) is a Fortran test-particle integrator. It interpolates 3D/2.5D MHD fields via Cloud-in-Cell and computes relativistic particle trajectories using Runge-Kutta methods, designed for solar flare and magnetic reconnection research."
+# **GURIS** (Guiding-center Utility for Relativistic Interactions in Simulations) 
 
-# Particulas de prueba con aproximacion de centro guia y lectura TXT
+## **GURIS** is a Fortran test-particle integrator. It interpolates 3D/2.5D MHD fields via Cloud-in-Cell and computes relativistic particle trajectories using Runge-Kutta methods, designed for solar flare and magnetic reconnection research."
+
+### .... --.- - .-.. ...- ... --.//.... --.- - .-.. ...- ... --.//.... --.- - .-.. ...- ... --.//.... --.- - .-.. ...- ... --.// 
+
+
+## Particulas de prueba con aproximacion de centro guia y lectura TXT
 
 Esta version evoluciona particulas de prueba en la aproximacion de centro guia. No reproduce el movimiento de giro alrededor de B.
 
