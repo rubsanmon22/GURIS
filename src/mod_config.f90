@@ -15,25 +15,25 @@ module mod_config
      character(len=256) :: field_file   = "fields_uniform.txt"
 
      integer :: nx = 32, ny = 32, nz = 32
-     real(dp) :: xmin = 0.0_dp, xmax = 1.0_dp
-     real(dp) :: ymin = 0.0_dp, ymax = 1.0_dp
-     real(dp) :: zmin = 0.0_dp, zmax = 1.0_dp
+     real(dp) :: xmin = 0.0_dp, xmax = 1.0e5_dp ! 1km en cm
+     real(dp) :: ymin = 0.0_dp, ymax = 1.0e5_dp
+     real(dp) :: zmin = 0.0_dp, zmax = 1.0e5_dp
 
-     real(dp) :: bx0 = 0.0_dp, by0 = 0.0_dp, bz0 = 1.0_dp
-     real(dp) :: ex0 = 0.1_dp, ey0 = 0.0_dp, ez0 = 0.0_dp
+     real(dp) :: bx0 = 0.0_dp, by0 = 0.0_dp, bz0 = 1.0_dp ! campo magnético uniforme [gauss]
+     real(dp) :: ex0 = 0.1_dp, ey0 = 0.0_dp, ez0 = 0.0_dp ! campo eléctrico uniforme [statvolt/cm]
 
      integer :: npart = 10000, nsteps = 200
      real(dp) :: dt = 1.0e-3_dp
-     real(dp) :: temperature = 1.0_dp
-     real(dp) :: q_particle = 1.0_dp
-     real(dp) :: m_particle = 1.0_dp
-     real(dp) :: kb = 1.0_dp
+     real(dp) :: temperature = 1.0_dp 
+     real(dp) :: q_particle = 9.109e-28_dp ! carga de e en CGS
+     real(dp) :: m_particle = 4.806e-10_dp ! masa de e en CGS
+     real(dp) :: kb = 1.381e-16_dp ! constante de Boltzmann en CGS
 
      logical :: use_exb_drift = .true.
      logical :: use_gradb_drift = .true.
      logical :: use_curvature_drift = .true.
      logical :: use_mirror_force = .true.
-     real(dp) :: exb_factor = 1.0_dp
+     real(dp) :: exb_factor = 2.998e11_dp ! factor de escala para el drift ExB
 
      character(len=256) :: boundary_condition = "periodic"
      character(len=256) :: output_dir = "output"
