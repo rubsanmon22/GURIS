@@ -39,9 +39,9 @@ contains
     ! drift E: ve = vecE x vecB/B^2
     vex=0.0_dp; vey=0.0_dp; vez=0.0_dp
     if (cfg%use_exb_drift) then
-       vex=cfg%exb_factor*(fs%ey*fs%bz - fs%ez*fs%by)*inv_b2
-       vey=cfg%exb_factor*(fs%ez*fs%bx - fs%ex*fs%bz)*inv_b2
-       vez=cfg%exb_factor*(fs%ex*fs%by - fs%ey*fs%bx)*inv_b2
+       vex=cfg%exb_factor*(fs%ey*fs%bz - fs%ez*fs%by)*inv_b2*(1/m)
+       vey=cfg%exb_factor*(fs%ez*fs%bx - fs%ex*fs%bz)*inv_b2*(1/m)
+       vez=cfg%exb_factor*(fs%ex*fs%by - fs%ey*fs%bx)*inv_b2*(1/m)
     end if
 
     ! (bxg, byg, bzg) = vecb x grad B,
@@ -51,7 +51,7 @@ contains
        bxg=fs%bhy*fs%gradb_z - fs%bhz*fs%gradb_y
        byg=fs%bhz*fs%gradb_x - fs%bhx*fs%gradb_z
        bzg=fs%bhx*fs%gradb_y - fs%bhy*fs%gradb_x
-       vgbx=((mu*m)/(q*fs%bmag))*bxg; vgby=((mu*m)/(q*fs%bmag))*byg; vgbz=((mu*m)/(q*fs%bmag))*bzg
+       vgbx=((mu)/(q*fs%bmag))*bxg; vgby=((mu)/(q*fs%bmag))*byg; vgbz=((mu)/(q*fs%bmag))*bzg
     end if
 
     ! (bxk, byk, bzk) =  b x kappa: kappa = b . grad b
@@ -61,22 +61,24 @@ contains
        bxk=fs%bhy*fs%kappa_z - fs%bhz*fs%kappa_y
        byk=fs%bhz*fs%kappa_x - fs%bhx*fs%kappa_z
        bzk=fs%bhx*fs%kappa_y - fs%bhy*fs%kappa_x
-       vcx=(m*vpar*vpar/(q*fs%bmag))*bxk
-       vcy=(m*vpar*vpar/(q*fs%bmag))*byk
-       vcz=(m*vpar*vpar/(q*fs%bmag))*bzk
+       vcx=(vpar*vpar/(q*fs%bmag))*bxk
+       vcy=(vpar*vpar/(q*fs%bmag))*byk
+       vcz=(vpar*vpar/(q*fs%bmag))*bzk
     end if
 
     ! dr/dt = vpar b + vdrift; vdrift = ve + vgb + vc (electric, gradient of B and curvature)
+    ! todo en unidades de velocidad por unidad de masa
     dxdt=vpar*fs%bhx + vex + vgbx + vcx
     dydt=vpar*fs%bhy + vey + vgby + vcy
     dzdt=vpar*fs%bhz + vez + vgbz + vcz
+    
     ! dvpar/dt = q/m epar - mu/m bgradb
     if (cfg%use_mirror_force) then
        ! bdgradb = vecb . grad vecb
        bdgradb=fs%bhx*fs%gradb_x + fs%bhy*fs%gradb_y + fs%bhz*fs%gradb_z
-       dvpardt=(q/m)*epar - (mu/m)*bdgradb
+       dvpardt=(q/(m*m))*epar - (mu/(m*m))*bdgradb !aceleracion por unidad de masa
     else
-       dvpardt=(q/m)*epar
+       dvpardt=(q/(m*m))*epar !aceleracion por unidad de masa
     end if
   end subroutine guiding_center_rhs
 
