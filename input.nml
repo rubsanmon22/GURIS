@@ -1,7 +1,7 @@
 &run_config
   ! field_source = "analytic" usa un campo uniforme interno.
   ! field_source = "file" lee un TXT con columnas: x y z Bx By Bz Ex Ey Ez.
-  field_source = "file"
+  field_source = "analytic"
   file_type    = "txt"
   field_file   = "fields_uniform.txt"
 
@@ -23,12 +23,12 @@
   bx0 = 0.0d0
   by0 = 0.0d0
   bz0 = 1.0d0
-  ex0 = 0.1d0
+  ex0 = 3.0d0
   ey0 = 0.0d0
   ez0 = 0.0d0
 
   ! Particulas.
-  npart       = 10
+  npart       = 100
   nsteps      = 200
   dt          = 1.0d-3
   temperature = 1.0d0
