@@ -1,0 +1,70 @@
+&run_config
+  ! field_source = "analytic" usa un campo uniforme interno.
+  ! field_source = "file" lee un TXT con columnas: x y z Bx By Bz Ex Ey Ez.
+  field_source = "file"
+  file_type    = "txt"
+  field_file   = "fields_uniform.txt"
+
+  ! Grilla cartesiana uniforme.
+  nx = 32
+  ny = 32
+  nz = 32
+
+  xmin = 0.0d0
+  xmax = 1.0d0
+  ymin = 0.0d0
+  ymax = 1.0d0
+  zmin = 0.0d0
+  zmax = 1.0d0
+
+  ! Campo uniforme de prueba.
+  ! B = (0,0,1), E = (0.1,0,0)
+  ! Entonces v_E = E x B / B^2 = (0,-0.1,0).
+  bx0 = 1.0d0
+  by0 = 1.0d0
+  bz0 = 1.0d0
+  ex0 = 0.1d0
+  ey0 = 0.1d0
+  ez0 = 0.1d0
+
+  ! Particulas.
+  npart       = 10
+  nsteps      = 200
+  dt          = 1.0d-3
+  temperature = 500.0d0
+  q_particle  = -1.602d-19
+  m_particle  = 9.109d-31
+  kb          = 1.381d-23
+
+  ! Terminos de centro guia.
+  use_exb_drift       = .true.
+  use_gradb_drift     = .true.
+  use_curvature_drift = .true.
+  use_mirror_force    = .true.
+
+  !Trayectorias
+  write_trajectories = .true.
+  trajectory_stride = 1
+
+  ! modo 1: seguir primeras N partículas
+  trajectory_npart = 10
+  trajectory_nids = 0
+
+  ! modo 2: seguir ids explícitos
+  ! trajectory_npart = 0
+  ! trajectory_nids = 3
+  ! trajectory_ids = 1, 5, 8
+
+  ! En unidades SI o normalizadas tipicas usar 1.
+  ! En cgs puede hacer falta usar c.
+  exb_factor = 1.0d0
+
+  ! boundary_condition = "periodic" o "remove"
+  boundary_condition = "periodic"
+
+  output_dir    = "output"
+  output_prefix = "gc_txt"
+  nbins_energy  = 80
+
+  random_seed = 12345
+/
