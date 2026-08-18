@@ -4,7 +4,7 @@ import numpy as np
 # 1. PARÁMETROS DE CONFIGURACIÓN, DIMENSIONES Y RESOLUCIÓN
 # ==============================================================================
 # Nombre del archivo de salida
-OUTPUT_FILE = "dipole.txt"
+OUTPUT_FILE = "fields_dipole.txt"
 
 # Dimensiones del dominio espacial (e.g. en cm, m o unidades de radio solar)
 xmin, xmax = -10.0, 10.0
@@ -19,7 +19,7 @@ Nz = 32
 # Parámetros del dipolo magnético
 # Momento dipolar m = (mx, my, mz)
 mx, my, mz = 0.0, 0.0, 1000.0  # Dipolo orientado en Z
-mu0_over_4pi = 1e-7             # Factor de escala (1.0 para CGS/Gauss, 1e-7 para SI)
+mu0_over_4pi = 1e-7           # Factor de escala (1.0 para CGS/Gauss, 1e-7 para SI)
 epsilon = 1e-3                 # Suavizado para evitar división por cero en r = 0
 
 # ==============================================================================

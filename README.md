@@ -74,6 +74,14 @@ Sin OpenMP:
 ```bash
 make OMP=0
 ```
+ds_uniform.txt` con:
+
+```text
+B = (0, 0, 1)
+E = (0.1, 0, 0)
+```
+
+En unidades normalizadas, la deriva de ExB esperada es:
 
 ## Correr el ejemplo con TXT
 
@@ -92,7 +100,20 @@ make run
 ## Graficar energias
 
 ```bash
-python3 scripts/plot_energy.py
+python3 script
+make fields
+make
+./gc_particles
+```
+
+Tambien puede hacerse todo junto con:
+
+```bash
+make run
+```
+
+## Graficar energias
+s/plot_energy.py
 ```
 
 Esto genera:

@@ -58,19 +58,19 @@ contains
     do ip=1,part%np
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!       Distrobución esferica centrada en el centro del dominio de simulación
-    do
-      px = -R_max + 2.0_dp*R_max*uniform_random()
-      py = -R_max + 2.0_dp*R_max*uniform_random()
-      pz = -R_max + 2.0_dp*R_max*uniform_random()
-      ! Chequeo si la partícula esta dentro de la esfera de radio R_max
-      if (px**2 + py**2 + pz**2 <= R_max**2) exit
-    end do
+! Distribución esferica centrada en el centro del dominio de simulación
+!    do
+!      px = -R_max + 2.0_dp*R_max*uniform_random()
+!      py = -R_max + 2.0_dp*R_max*uniform_random()
+!      pz = -R_max + 2.0_dp*R_max*uniform_random()
+!      ! Chequeo si la partícula esta dentro de la esfera de radio R_max
+!      if (px**2 + py**2 + pz**2 <= R_max**2) exit
+!    end do
 
 ! Desplazo el origen de la distribución esférica al centro del dominio de simulación
-    part%x(ip)= px + cx
-    part%y(ip)= py + cy
-    part%z(ip)= pz + cz
+!    part%x(ip)= px + cx
+!    part%y(ip)= py + cy
+!    part%z(ip)= pz + cz
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       
       
@@ -103,6 +103,10 @@ contains
 !       if (part%z(ip) >= grid%zmax) part%z(ip)=grid%zmax-eps*(grid%zmax-grid%zmin)
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! PARTICULAS PUESTAS EN EL ECUADOR TERRESTRE DEL CAMPO DIPOLAR
+      
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !     Distribución de velocidades Maxwelliana         
        ! vpar = sigma_v * gaussian random

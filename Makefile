@@ -46,7 +46,10 @@ $(EXE): $(OBJECTS)
 fields:
 	python3 scripts/make_uniform_txt.py
 
-run: all fields
+dipole:
+	python3 scripts/make_dipole_txt.py
+
+run: all fields dipole
 	./$(EXE)
 
 plot:
@@ -56,6 +59,4 @@ clean:
 	rm -rf $(BUILD_DIR) $(EXE)
 
 distclean: clean
-	rm -rf output fields_uniform.txt
-
-.PHONY: all fields run plot clean distclean
+	rm -rf output fields_uniform.txt dipole.txt
