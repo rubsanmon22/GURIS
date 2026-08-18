@@ -59,4 +59,4 @@ clean:
 	rm -rf $(BUILD_DIR) $(EXE)
 
 distclean: clean
-	rm -rf output fields_uniform.txt dipole.txt
+	rm -rf output fields_uniform.txt fields_dipole.txt

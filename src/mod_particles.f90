@@ -75,18 +75,18 @@ contains
       
       
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!       Distribución esferica de partiículas
-!    do
-!      px = -R_max + 2.0_dp*R_max*uniform_random()
-!      py = -R_max + 2.0_dp*R_max*uniform_random()
-!      pz = -R_max + 2.0_dp*R_max*uniform_random()
+!       Distribución esferica (anular) de partiículas
+    do
+      px = -R_max + 2.0_dp*R_max*uniform_random()
+      py = -R_max + 2.0_dp*R_max*uniform_random()
+      pz =  0.0_dp!-R_max + 2.0_dp*R_max*uniform_random()
 ! Chequeo si la partícula esta dentro de la esfera de radio R_max
-!      if (px**2 + py**2 + pz**2 <= R_max**2) exit
-!    end do
-!      
-!      part%x(ip)=px
-!      part%y(ip)=py
-!      part%z(ip)=pz
+      if (px**2 + py**2 + pz**2 <= R_max**2) exit
+    end do
+    
+    part%x(ip)=px
+    part%y(ip)=py
+    part%z(ip)=pz
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       
       

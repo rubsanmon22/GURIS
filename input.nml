@@ -3,7 +3,7 @@
   ! field_source = "file" lee un TXT con columnas: x y z Bx By Bz Ex Ey Ez.
   field_source = "file"
   file_type    = "txt"
-  field_file   = "fields_uniform.txt"
+  field_file   = "fields_dipole.txt"
 
   ! Grilla cartesiana uniforme.
   nx = 32
@@ -31,7 +31,7 @@
   npart       = 1
   nsteps      = 200
   dt          = 1.0d-3
-  temperature = 500.0d0
+  temperature = 1700.0d0
   q_particle  = -1.602d-19
   m_particle  = 9.109d-31
   kb          = 1.381d-23
