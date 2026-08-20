@@ -58,5 +58,5 @@ plot:
 clean:
 	rm -rf $(BUILD_DIR) $(EXE)
 
-distclean: clean
+distclean:
 	rm -rf output fields_uniform.txt fields_dipole.txt

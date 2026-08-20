@@ -10,12 +10,12 @@
   ny = 32
   nz = 32
 
-  xmin = -10.0d0
-  xmax = 10.0d0
-  ymin = -10.0d0
-  ymax = 10.0d0
-  zmin = -10.0d0
-  zmax = 10.0d0
+  xmin = -50.0d0
+  xmax = 50.0d0
+  ymin = -50.0d0
+  ymax = 50.0d0
+  zmin = -50.0d0
+  zmax = 50.0d0
 
   ! Campo uniforme de prueba.
   ! B = (0,0,1), E = (0.1,0,0)
@@ -47,7 +47,7 @@
   trajectory_stride = 1
 
   ! modo 1: seguir primeras N partículas
-  trajectory_npart = 10
+  trajectory_npart = 1
   trajectory_nids = 0
 
   ! modo 2: seguir ids explícitos

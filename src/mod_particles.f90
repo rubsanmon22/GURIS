@@ -76,13 +76,13 @@ contains
       
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !       Distribución esferica (anular) de partiículas
-    do
-      px = -R_max + 2.0_dp*R_max*uniform_random()
-      py = -R_max + 2.0_dp*R_max*uniform_random()
-      pz =  0.0_dp!-R_max + 2.0_dp*R_max*uniform_random()
+!    do
+!      px = -R_max + 2.0_dp*R_max*uniform_random()
+!      py = -R_max + 2.0_dp*R_max*uniform_random()
+!      pz =  0.0_dp!-R_max + 2.0_dp*R_max*uniform_random()
 ! Chequeo si la partícula esta dentro de la esfera de radio R_max
-      if (px**2 + py**2 + pz**2 <= R_max**2) exit
-    end do
+!      if (px**2 + py**2 + pz**2 <= R_max**2) exit
+!    end do
     
     part%x(ip)=px
     part%y(ip)=py
@@ -92,21 +92,25 @@ contains
       
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !       PARTÍCULAS PUESTAS ALEATORIAMENTE EN EL DOMINIO DE SIMULACIÓN           
-!       rx=uniform_random(); ry=uniform_random(); rz=uniform_random()
-!       ! initial position xp = xmin + random*(xmax - xmin)
-!       part%x(ip)=cfg%xmin + rx*(cfg%xmax-cfg%xmin)
-!       part%y(ip)=cfg%ymin + ry*(cfg%ymax-cfg%ymin)
-!       part%z(ip)=cfg%zmin + rz*(cfg%zmax-cfg%zmin)
-!       ! if xp > xmax, xp = xmax - value*(xmax-xmin)
-!       if (part%x(ip) >= grid%xmax) part%x(ip)=grid%xmax-eps*(grid%xmax-grid%xmin)
-!       if (part%y(ip) >= grid%ymax) part%y(ip)=grid%ymax-eps*(grid%ymax-grid%ymin)
-!       if (part%z(ip) >= grid%zmax) part%z(ip)=grid%zmax-eps*(grid%zmax-grid%zmin)
+!      rx=uniform_random(); ry=uniform_random(); rz=uniform_random()
+!       initial position xp = xmin + random*(xmax - xmin)
+!      part%x(ip)=cfg%xmin + rx*(cfg%xmax-cfg%xmin)
+!      part%y(ip)=cfg%ymin + ry*(cfg%ymax-cfg%ymin)
+!      part%z(ip)=cfg%zmin + rz*(cfg%zmax-cfg%zmin)
+!       if xp > xmax, xp = xmax - value*(xmax-xmin)
+!      if (part%x(ip) >= grid%xmax) part%x(ip)=grid%xmax-eps*(grid%xmax-grid%xmin)
+!      if (part%y(ip) >= grid%ymax) part%y(ip)=grid%ymax-eps*(grid%ymax-grid%ymin)
+!      if (part%z(ip) >= grid%zmax) part%z(ip)=grid%zmax-eps*(grid%zmax-grid%zmin)
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! PARTICULAS PUESTAS EN EL ECUADOR TERRESTRE DEL CAMPO DIPOLAR
-      
+! PARTÍCULA PUESTA EN LUGAR ESPECÍFICO DEL DOMINIO DE SIMULACIÓN
+      part%x(ip)=10.0_dp
+      part%y(ip)=0.0_dp
+      part%z(ip)=0.0_dp
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !     Distribución de velocidades Maxwelliana         
        ! vpar = sigma_v * gaussian random
